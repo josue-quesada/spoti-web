@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="bg-dark min-vh-100">
+      <h3 class="text-primary text text-center mt-3">Not Spotify</h3>
+      <ul class="list-group list-group-flush flex-column text-center">
+        <li
+          class="list-group-item text-white bg-dark"
+          routerLink=""
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Home
+        </li>
+        <li
+          class="list-group-item text-white bg-dark"
+          routerLink="search"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Search
+        </li>
+        <li class="list-group-item text-white bg-dark">not home</li>
+      </ul>
+    </div>
+  </div>
+</div>
