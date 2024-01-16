@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './core/pages/home-page/home-page.component';
-import { SearchPageComponent } from './core/pages/search-page/search-page.component';
+import { SearchArtistPageComponent } from './core/pages/search-artist-page/search-artist-page.component';
+import { SearchSongPageComponent } from './core/pages/search-song-page/search-song-page.component';
 
 export const routes: Routes = [
   {
@@ -8,8 +9,12 @@ export const routes: Routes = [
     component: HomePageComponent
   },
   {
-    path: 'search',
-    component: SearchPageComponent
+    path: 'by-song',
+    component: SearchSongPageComponent
+  },
+  {
+    path: 'by-artist',
+    component: SearchArtistPageComponent
   },
   {
     path: '**', redirectTo: ''

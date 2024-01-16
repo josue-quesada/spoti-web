@@ -13,13 +13,21 @@
         </li>
         <li
           class="list-group-item text-white bg-dark"
-          routerLink="search"
+          routerLink="by-song"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          Search
+          Search Song
         </li>
-        <li class="list-group-item text-white bg-dark">not home</li>
+        <li
+          class="list-group-item text-white bg-dark"
+          routerLink="by-artist"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Search Artist
+        </li>
+        <li class="list-group-item text-white bg-dark">Profile?</li>
       </ul>
     </div>
   </div>
