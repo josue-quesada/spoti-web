@@ -1,8 +1,8 @@
-export interface TracksResult {
-  tracks: Tracks;
+export interface AlbumReleases {
+  albums: Albums;
 }
 
-export interface Tracks {
+export interface Albums {
   href:     string;
   items:    Item[];
   limit:    number;
@@ -13,26 +13,6 @@ export interface Tracks {
 }
 
 export interface Item {
-  album:             Album;
-  artists:           Artist[];
-  available_markets: string[];
-  disc_number:       number;
-  duration_ms:       number;
-  explicit:          boolean;
-  external_ids:      ExternalIDS;
-  external_urls:     ExternalUrls;
-  href:              string;
-  id:                string;
-  is_local:          boolean;
-  name:              string;
-  popularity:        number;
-  preview_url:       null | string;
-  track_number:      number;
-  type:              ItemType;
-  uri:               string;
-}
-
-export interface Album {
   album_type:             AlbumTypeEnum;
   artists:                Artist[];
   available_markets:      string[];
@@ -41,7 +21,7 @@ export interface Album {
   id:                     string;
   images:                 Image[];
   name:                   string;
-  release_date:           string;
+  release_date:           Date;
   release_date_precision: ReleaseDatePrecision;
   total_tracks:           number;
   type:                   AlbumTypeEnum;
@@ -78,13 +58,4 @@ export interface Image {
 
 export enum ReleaseDatePrecision {
   Day = "day",
-  Year = "year",
-}
-
-export interface ExternalIDS {
-  isrc: string;
-}
-
-export enum ItemType {
-  Track = "track",
 }
