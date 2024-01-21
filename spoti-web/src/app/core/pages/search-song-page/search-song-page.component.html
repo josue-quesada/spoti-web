@@ -1,11 +1,16 @@
-<h3 class="text-primary text text-center mt-3">Search Song</h3>
-<div class="row justify-content-center mx-0">
-  <div style="max-width: 30%" class="text-center text-light">
-    <core-search-box></core-search-box>
-    <h4>This is something you searched</h4>
-    <h4>This is something you searched</h4>
-    <h4>This is something you searched</h4>
-    <h4>This is something you searched</h4>
-    <h4>This is something you searched</h4>
+<h3 class="text-primary text text-center mt-3">Search for any Song</h3>
+<div class="row justify-content-center mx-0 mt-3">
+  <div style="max-width: 40%" class="text-center text-light">
+    <core-search-box
+      placeholder="ex: Chasing Light"
+      (onValue)="searchSongs($event)"
+    ></core-search-box>
+  </div>
+  <div class="row justify-content-center mx-0 mt-3">
+    @for (item of songs; track $index) {
+    <div class="col-md-5 mb-3 mx-2">
+      <shared-card [item]="item"></shared-card>
+    </div>
+    }
   </div>
 </div>

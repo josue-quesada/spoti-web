@@ -18,7 +18,7 @@ export class CoreService {
   private url: string = 'https://api.spotify.com/v1';
   idAndSecret: string = btoa(this.clientId + ':' + this.clientSecret);
   private token: string =
-    'BQCTEI0J5A4WxFDeOLRuISgpgwmKOzU0qpdF0L96X7UjrWdDKSn8qkuQ_zMF6mRdhMCsTgxuEqrMVcVauqs25ZbhGlBvhvdlObE724mQzq4NelPfFBA';
+    'BQDP74LAVwkq5Un-pWMQGCNgYYo7cW-Au6EqAxUoL9VhgtUCaePniIlb5xiLmYtd_hIcTbUmPYuzmMF_xM1V3-rywuCy2afpssgmJ5hJM6s2SgmsCtY';
 
   constructor(private http: HttpClient) {}
 
@@ -61,11 +61,10 @@ export class CoreService {
     );
   }
 
-  getSongsByArtist(id: string) {
-    const url = `${this.url}/search?q=${id}&type=track`;
+  getSongs(name: string) {
+    const url = `${this.url}/search?q=${name}&type=track`;
     return this.http.get<TracksResult>(url, this.options2).pipe(
       map((data) => {
-        console.log(data);
         return data;
       })
     );

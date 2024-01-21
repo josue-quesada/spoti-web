@@ -1,13 +1,17 @@
-<h3 class="text-primary text text-center mt-3">Search artist albums</h3>
+<h3 class="text-primary text-center mt-3">Search for an Artist Albums</h3>
 <div class="row justify-content-center mx-0 mt-3">
   <div style="max-width: 40%" class="text-center text-light">
     <core-search-box
       placeholder="ex: Linkin Park"
-
+      (onValue)="searchArtistId($event)"
       >
-
     </core-search-box>
   </div>
-
-
+  <div class="row justify-content-center mx-0 mt-3">
+    @for (item of albums; track $index) {
+      <div class="col-md-5  mb-3 mx-2">
+        <shared-card [item]="item"></shared-card>
+      </div>
+    }
+  </div>
 </div>

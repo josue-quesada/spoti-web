@@ -1,10 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { CoreService } from '../../../core/services/core.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ArtistsResponse } from '../../../core/interfaces/artist.interface';
-import { AlbumReleases, Item } from '../../../core/interfaces/releases.interface';
-import { TracksResult } from '../../../core/interfaces/track.interface';
-import { TopTracksResult } from '../../../core/interfaces/topTracks.interface';
+import { Item } from '../../../core/interfaces/releases.interface';
+
 
 @Component({
   selector: 'shared-card',
@@ -15,24 +12,10 @@ import { TopTracksResult } from '../../../core/interfaces/topTracks.interface';
 })
 export class CardComponent {
 
-  // public artists?: ArtistsResponse;
   @Input()
-  public item!: Item
+  public item!: any
 
   ngOnInit(){
-    if(!this.item) throw Error('Item required!!!!!!!!11')
+    if(!this.item) throw Error('Item required!')
   }
-
-  // getArtist(name: string){
-  //   //this.coreService.getArtistAlbums('metallica');
-  //   console.log(this.coreService.getArtistTops('2ye2Wgw4gimLv2eAKyk1NB').subscribe((data: TopTracksResult) => {
-  //     console.log(data)
-  //   }));
-  // //   this.coreService.getArtistId('metallica').subscribe((data: ArtistsResponse) => {
-  // //     console.log(data)
-  // //     this.artists = data
-  // //     console.log(this.artists.artists.items[0].id)
-  // //   })
-  // }
-
 }

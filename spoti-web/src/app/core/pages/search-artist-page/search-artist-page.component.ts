@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { SearchBoxComponent } from "../../components/search-box/search-box.component";
 import { Item } from '../../interfaces/album.interface';
 import { CoreService } from '../../services/core.service';
+import { CardComponent } from "../../../shared/components/card/card.component";
 
 @Component({
     selector: 'app-search-artist-page',
     standalone: true,
     templateUrl: './search-artist-page.component.html',
     styles: ``,
-    imports: [SearchBoxComponent]
+    imports: [SearchBoxComponent, CardComponent]
 })
 export class SearchArtistPageComponent {
 
@@ -21,6 +22,9 @@ export class SearchArtistPageComponent {
     this.coreService.getArtistId(name).subscribe((data) => {
       this.artistId = data.artists.items[0].id;
     });
+    if(this.artistId != ''){
+      this.searchAlbums(this.artistId)
+    }
   }
 
   searchAlbums(id:string){

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CoreService } from '../../services/core.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'core-search-box',
@@ -15,17 +16,7 @@ export class SearchBoxComponent {
   @Output()
   public onValue = new EventEmitter<string>();
 
-  public artistId: string = '';
-
-  constructor(private coreService: CoreService){}
-
   emitValue(value: string) {
     this.onValue.emit(value);
-  }
-
-  searchArtistId(name:string){
-    this.coreService.getArtistId(name).subscribe((data) => {
-      this.artistId = data.artists.items[0].id;
-    });
   }
 }

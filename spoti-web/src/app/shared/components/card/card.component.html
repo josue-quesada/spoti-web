@@ -2,7 +2,7 @@
   <div class="row card-body text-white">
     <div class="col-5">
       <img
-        src="{{ item.images[1].url }}"
+        src="{{ item.image ? item.images[1].url : item.album.images[1].url }}"
         alt=""
         style="
           max-width: 150px;
@@ -13,9 +13,9 @@
     </div>
 
     <div class="col mt-2 mx-2 text-center">
-      <h3>{{ item.name }}</h3>
+      <h4>{{ item.name }}</h4>
       @for (artist of item.artists; track $index) {
-        <span class="mx-1">- {{artist.name}}</span>
+      <span class="mx-1">- {{ artist.name }}</span>
       }
     </div>
   </div>
