@@ -18,7 +18,7 @@ export class CoreService {
   private url: string = 'https://api.spotify.com/v1';
   idAndSecret: string = btoa(this.clientId + ':' + this.clientSecret);
   private token: string =
-    'BQCdIbFZXLvoxPUncfV9sxbO84iUytflcUT5I6A5Q9n-TUnjwy-R7NntkV327SBuitBf2Njm53IjRqn_ZLqDjq3tPUOpZctsJIWc9VVnE0vIe57e-Vg';
+    'BQCTEI0J5A4WxFDeOLRuISgpgwmKOzU0qpdF0L96X7UjrWdDKSn8qkuQ_zMF6mRdhMCsTgxuEqrMVcVauqs25ZbhGlBvhvdlObE724mQzq4NelPfFBA';
 
   constructor(private http: HttpClient) {}
 
@@ -56,13 +56,12 @@ export class CoreService {
     const url = `${this.url}/browse/new-releases`;
     return this.http.get<AlbumReleases>(url, this.options2).pipe(
       map((data) => {
-        console.log(data);
         return data;
       })
     );
   }
 
-  getSongs(id: string) {
+  getSongsByArtist(id: string) {
     const url = `${this.url}/search?q=${id}&type=track`;
     return this.http.get<TracksResult>(url, this.options2).pipe(
       map((data) => {
@@ -74,8 +73,8 @@ export class CoreService {
 
   getArtistId(name: string) {
     const url = `${this.url}/search?q=${name}&type=artist`;
-    return this.http.get<any>(url, this.options2).pipe(
-      map((data: any) => {
+    return this.http.get<ArtistsResponse>(url, this.options2).pipe(
+      map((data) => {
         return data;
       })
     );
@@ -85,40 +84,17 @@ export class CoreService {
     const url = `${this.url}/artists/${id}/top-tracks?market=US`;
     return this.http.get<TopTracksResult>(url, this.options2).pipe(
       map((data) => {
-        console.log(data);
         return data;
       })
     );
   }
 
-  /*Todo cambiarlo para que tenga un formato similar al de los demas y que
-  cuando haga la busqueda se subcriba y obtenga el id, y hace el resto
-  */
-  getArtistAlbums(name: string) {
-    this.getArtistId(name).subscribe((data: ArtistsResponse) => {
-      const id = data.artists.items[0]?.id;
-      if (id) {
-        console.log(id);
-        const url = `${this.url}/artists/${id}/albums`;
-        return this.http.get<any>(url, this.options2).pipe(
-          map((data: AlbumResponse) => {
-            console.log(data);
-            return data;
-          })
-        );
-      } else {
-        console.log('Artist ID not found.');
-        return;
-      }
-    });
-
-    // this.getArtistId(name).subscribe((data: ArtistsResponse) => {
-    //   const id = data.artists.items[0]?.id;
-    //   if (id) {
-
-    //   } else {
-    //     console.log('Artist ID not found.');
-    //   }
-    // });
+  getArtistAlbums(id: string) {
+    const url = `${this.url}/artists/${id}/albums`;
+    return this.http.get<AlbumResponse>(url, this.options2).pipe(
+      map((data: AlbumResponse) => {
+        return data;
+      })
+    );
   }
 }

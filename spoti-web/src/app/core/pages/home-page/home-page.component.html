@@ -1,2 +1,9 @@
-<h3 class="text-primary text text-center mt-3">Home</h3>
-<shared-card-list></shared-card-list>
+<h3 class="text-primary text text-center mt-3">Latest Popular Releases</h3>
+<!-- <shared-card-list></shared-card-list> -->
+<div class="row justify-content-center mx-0 mt-3">
+  @for (item of releases; track $index) {
+    <div class="col-md-5  mb-3 mx-2">
+      <shared-card [item]="item"></shared-card>
+    </div>
+  }
+</div>

@@ -1,10 +1,22 @@
-<div class="card text-center bg-secondary">
-  <div class="card-body text-white">
-    <h3>Song image</h3>
-    <h5>Song name</h5>
-    <span class="badge bg-primary">something</span>
-    <span class="badge bg-primary">something 2</span>
-    <span class="badge bg-primary">something 3</span>
-    <button (click)="getArtist('metallica')">Click</button>
+<div class="card bg-secondary">
+  <div class="row card-body text-white">
+    <div class="col-5">
+      <img
+        src="{{ item.images[1].url }}"
+        alt=""
+        style="
+          max-width: 150px;
+          border-radius: 4px;
+          border: 2px solid rgb(22, 25, 27);
+        "
+      />
+    </div>
+
+    <div class="col mt-2 mx-2 text-center">
+      <h3>{{ item.name }}</h3>
+      @for (artist of item.artists; track $index) {
+        <span class="mx-1">- {{artist.name}}</span>
+      }
+    </div>
   </div>
 </div>
