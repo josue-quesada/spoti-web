@@ -18,7 +18,7 @@ export class CoreService {
   private url: string = 'https://api.spotify.com/v1';
   idAndSecret: string = btoa(this.clientId + ':' + this.clientSecret);
   private token: string =
-    'BQDP74LAVwkq5Un-pWMQGCNgYYo7cW-Au6EqAxUoL9VhgtUCaePniIlb5xiLmYtd_hIcTbUmPYuzmMF_xM1V3-rywuCy2afpssgmJ5hJM6s2SgmsCtY';
+    'BQDqvBlpQrQ67h7SAoPdDF4Cj0lyEo8hycw_P7FG7j8An7wcH7EnzLKmI0nkVPvfHIF83F2uduPESC5dy3fluvdqINyvA6FwaXCboxcObhwcVASxymE';
 
   constructor(private http: HttpClient) {}
 

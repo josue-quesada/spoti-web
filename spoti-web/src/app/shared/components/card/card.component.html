@@ -2,20 +2,20 @@
   <div class="row card-body text-white">
     <div class="col-5">
       <img
-        src="{{ item.image ? item.images[1].url : item.album.images[1].url }}"
+        src="{{item.images ? item.images[1].url : item.album.images[1].url}}"
         alt=""
         style="
           max-width: 150px;
           border-radius: 4px;
           border: 2px solid rgb(22, 25, 27);
-        "
-      />
+        ">
+
     </div>
 
     <div class="col mt-2 mx-2 text-center">
       <h4>{{ item.name }}</h4>
       @for (artist of item.artists; track $index) {
-      <span class="mx-1">- {{ artist.name }}</span>
+        <span class="badge text-bg-info mx-1">{{artist.name}}</span>
       }
     </div>
   </div>
