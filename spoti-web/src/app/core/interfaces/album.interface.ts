@@ -1,75 +1,84 @@
-export interface AlbumResponse {
-  href:     string;
-  items:    Item[];
-  limit:    number;
-  next:     string;
-  offset:   number;
-  previous: null;
-  total:    number;
-}
-
-export interface Item {
-  album_group:            AlbumGroup;
-  album_type:             AlbumGroup;
-  artists:                Artist[];
-  available_markets:      string[];
-  external_urls:          ExternalUrls;
-  href:                   string;
-  id:                     string;
-  images:                 Image[];
-  name:                   string;
-  release_date:           Date;
-  release_date_precision: ReleaseDatePrecision;
-  total_tracks:           number;
-  type:                   AlbumGroup;
-  uri:                    string;
-}
-
-export enum AlbumGroup {
-  Album = "album",
+export interface Album {
+    album_type:             string;
+    artists:                Artist[];
+    available_markets:      string[];
+    copyrights:             Copyright[];
+    external_ids:           ExternalIDS;
+    external_urls:          ExternalUrls;
+    genres:                 any[];
+    href:                   string;
+    id:                     string;
+    images:                 Image[];
+    label:                  string;
+    name:                   string;
+    popularity:             number;
+    release_date:           Date;
+    release_date_precision: string;
+    total_tracks:           number;
+    tracks:                 Tracks;
+    type:                   string;
+    uri:                    string;
 }
 
 export interface Artist {
-  external_urls: ExternalUrls;
-  href:          string;
-  id:            ID;
-  name:          Name;
-  type:          Type;
-  uri:           URI;
+    external_urls: ExternalUrls;
+    href:          string;
+    id:            string;
+    name:          string;
+    type:          ArtistType;
+    uri:           string;
 }
 
 export interface ExternalUrls {
-  spotify: string;
+    spotify: string;
 }
 
-export enum ID {
-  The1QHStDLIc8UV7HvTG6FGRJ = "1qHStDLIc8uV7hvTG6FGRJ",
-  The2Ye2Wgw4GimLv2EAKyk1NB = "2ye2Wgw4gimLv2eAKyk1NB",
-  The42TFhl7WlMRXiNqzSrnzPL = "42TFhl7WlMRXiNqzSrnzPL",
+export enum ArtistType {
+    Artist = "artist",
 }
 
-export enum Name {
-  LouReed = "Lou Reed",
-  Metallica = "Metallica",
-  SANFranciscoSymphony = "San Francisco Symphony",
+export interface Copyright {
+    text: string;
+    type: string;
 }
 
-export enum Type {
-  Artist = "artist",
-}
-
-export enum URI {
-  SpotifyArtist1QHStDLIc8UV7HvTG6FGRJ = "spotify:artist:1qHStDLIc8uV7hvTG6FGRJ",
-  SpotifyArtist2Ye2Wgw4GimLv2EAKyk1NB = "spotify:artist:2ye2Wgw4gimLv2eAKyk1NB",
-  SpotifyArtist42TFhl7WlMRXiNqzSrnzPL = "spotify:artist:42TFhl7WlMRXiNqzSrnzPL",
+export interface ExternalIDS {
+    upc: string;
 }
 
 export interface Image {
-  height: number;
-  url:    string;
-  width:  number;
+    height: number;
+    url:    string;
+    width:  number;
 }
 
-export enum ReleaseDatePrecision {
-  Day = "day",
+export interface Tracks {
+    href:     string;
+    items:    Item[];
+    limit:    number;
+    next:     null;
+    offset:   number;
+    previous: null;
+    total:    number;
+}
+
+export interface Item {
+    artists:           Artist[];
+    available_markets: string[];
+    disc_number:       number;
+    duration_ms:       number;
+    explicit:          boolean;
+    external_urls:     ExternalUrls;
+    href:              string;
+    id:                string;
+    is_local:          boolean;
+    name:              string;
+    preview_url:       null | string;
+    track_number:      number;
+    type:              ItemType;
+    uri:               string;
+}
+
+export enum ItemType {
+    Track = "track",
 }

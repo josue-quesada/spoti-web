@@ -2,11 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, switchMap } from 'rxjs';
 import { SpotiToken } from '../interfaces/spotify.interface';
-import { ArtistsResponse } from '../interfaces/artist.interface';
-import { AlbumResponse } from '../interfaces/album.interface';
+import { ArtistsResponse } from '../interfaces/artists.interface';
+import { AlbumResponse } from '../interfaces/albums.interface';
 import { AlbumReleases } from '../interfaces/releases.interface';
 import { TracksResult } from '../interfaces/track.interface';
 import { TopTracksResult } from '../interfaces/topTracks.interface';
+import { Artist } from '../interfaces/artist.interface';
+import { Album } from '../interfaces/album.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +20,7 @@ export class CoreService {
   private url: string = 'https://api.spotify.com/v1';
   idAndSecret: string = btoa(this.clientId + ':' + this.clientSecret);
   private token: string =
-    'BQDqvBlpQrQ67h7SAoPdDF4Cj0lyEo8hycw_P7FG7j8An7wcH7EnzLKmI0nkVPvfHIF83F2uduPESC5dy3fluvdqINyvA6FwaXCboxcObhwcVASxymE';
+    'BQBDXDpWiZeceSUD4r_J9xuqQ5ha3ZSXMY8FTHIbIwR8t6UqNMMn3PXE5NWK8wmlU3dcLRY-4vk6bSePcVHMCEXNR1MZRX44SzFMpxDH627MTwXm5Fk';
 
   constructor(private http: HttpClient) {}
 
@@ -46,6 +48,7 @@ export class CoreService {
         catchError(() => of(''))
       )
       .subscribe((token) => {
+        console.log(`nuevo token ${token}`)
         this.token = token;
       });
 
@@ -70,6 +73,15 @@ export class CoreService {
     );
   }
 
+  getAlbumById(id:string){
+    const url = `${this.url}/albums/${id}`;
+    return this.http.get<Album>(url, this.options2).pipe(
+      map((data) => {
+        return data;
+      })
+    )
+  }
+
   getArtistId(name: string) {
     const url = `${this.url}/search?q=${name}&type=artist`;
     return this.http.get<ArtistsResponse>(url, this.options2).pipe(
@@ -77,6 +89,15 @@ export class CoreService {
         return data;
       })
     );
+  }
+
+  getArtist(id:string){
+    const url = `${this.url}/artists/${id}`;
+    return this.http.get<Artist>(url, this.options2).pipe(
+      map((data) => {
+        return data;
+      })
+    )
   }
 
   getArtistTops(id: string) {

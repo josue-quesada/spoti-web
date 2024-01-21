@@ -1,1 +1,35 @@
-<p>artist-page works!</p>
+<div class="row justify-content-center mx-0 mt-3">
+  <div class="row mt-3">
+    @if (artist) {
+    <img
+      class="p-0"
+      src="{{ artist.images[1].url }}"
+      alt=""
+      style="
+        float: left;
+        border-radius: 10px;
+        border: 2px solid white;
+        max-width: 150px;
+        margin-left: 100px;
+      "
+    />
+    <div class="ms-3" style="max-width: 600px;">
+        <button type="button" class="btn btn-outline-warning" style="float: inline-end;" (click)="goBack()">
+            Go Back
+          </button>
+        <h1 class="text-light mt-3" style="max-width: 400px; max-height: 80px">
+            {{ artist.name }}
+          </h1>
+          
+          <h5 class="mt-4" style="max-width: 400px; max-height: 80px">
+            <a href="{{ artist.external_urls.spotify }}"
+              >See the artists Spotify page</a
+            >
+          </h5>
+          
+    </div>
+    
+    }
+    <shared-table [songs]="topTracks"></shared-table>
+  </div>
+</div>

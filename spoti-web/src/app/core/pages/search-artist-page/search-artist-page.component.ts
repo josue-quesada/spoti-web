@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchBoxComponent } from "../../components/search-box/search-box.component";
-import { Item } from '../../interfaces/album.interface';
+import { Item } from '../../interfaces/albums.interface';
 import { CoreService } from '../../services/core.service';
 import { CardComponent } from "../../../shared/components/card/card.component";
 

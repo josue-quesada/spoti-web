@@ -4,6 +4,7 @@
       <img
         src="{{item.images ? item.images[1].url : item.album.images[1].url}}"
         alt=""
+        (click)="goToAlbum()"
         style="
           max-width: 150px;
           border-radius: 4px;
@@ -15,7 +16,7 @@
     <div class="col mt-2 mx-2 text-center">
       <h4>{{ item.name }}</h4>
       @for (artist of item.artists; track $index) {
-        <span class="badge text-bg-info mx-1">{{artist.name}}</span>
+        <span class="badge text-bg-info mx-1" [routerLink] = "['/artist/', artist.id]">{{artist.name}}</span>
       }
     </div>
   </div>

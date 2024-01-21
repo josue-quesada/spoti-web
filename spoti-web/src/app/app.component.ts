@@ -11,5 +11,5 @@ import { SidebarComponent } from "./core/components/sidebar/sidebar.component";
     imports: [CommonModule, RouterOutlet, SidebarComponent]
 })
 export class AppComponent {
-  title = 'spoti-web';
+  title = 'Not-Spotify';
 }
